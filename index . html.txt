@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>عرض سيارات للبيع</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+  }
+
+  header {
+    background: #1f2937;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+
+  #viewer {
+    width: 100%;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ddd;
+  }
+
+  #viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+  }
+
+  #info {
+    text-align: center;
+    background: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  #info h3 {
+    margin-bottom: 5px;
+  }
+
+  #info p {
+    margin: 4px 0;
+  }
+
+  #buttons a {
+    display: inline-block;
+    margin: 8px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .call {
+    background: #2563eb;
+  }
+
+  .whatsapp {
+    background: #25D366;
+  }
+
+  #gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px;
+  }
+
+  .car-label {
+    background: #1f2937;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .car-label:hover {
+    background: #374151;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    color: #555;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <p>📍 العنوان: شارع الكرامة – مول فلوري</p>
+  <p>📞 الهاتف: 0666745673</p>
+</header>
+
+<div id="viewer">
+  <img id="car-main-image" src="https://via.placeholder.com/800x400?text=Dacia">
+</div>
+
+<div id="info">
+  <h3 id="car-name">Dacia Logan</h3>
+  <p id="car-color">اللون: أبيض</p>
+  <p id="car-price">السعر: 120,000 درهم</p>
+  <p id="car-note">الحالة: أوراق كاملة – اقتصادية – مجربة</p>
+
+  <div id="buttons">
+    <a class="call" href="tel:0666745673">اتصل الآن</a>
+    <a class="whatsapp" href="https://wa.me/212666745673" target="_blank">
+      تواصل عبر WhatsApp
+    </a>
+  </div>
+</div>
+
+<div id="gallery">
+  <div class="car-label" data-car="0">Dacia</div>
+  <div class="car-label" data-car="1">Clio</div>
+  <div class="car-label" data-car="2">Ford</div>
+  <div class="car-label" data-car="3">Peugeot</div>
+  <div class="car-label" data-car="4">Mercedes</div>
+</div>
+
+<footer>
+  جميع الحقوق محفوظة ©
+</footer>
+
+<script>
+const carData = [
+  {
+    name: "Dacia Logan",
+    color: "أبيض",
+    price: "120,000 درهم",
+    note: "أوراق كاملة – اقتصادية – مجربة",
+    image: "https://via.placeholder.com/800x400?text=Dacia"
+  },
+  {
+    name: "Renault Clio",
+    color: "أحمر",
+    price: "135,000 درهم",
+    note: "محرك مزيان – صرف قليل – نظيفة",
+    image: "https://via.placeholder.com/800x400?text=Clio"
+  },
+  {
+    name: "Ford Focus",
+    color: "أسود",
+    price: "150,000 درهم",
+    note: "قوية فالطريق – مريحة – جاهزة",
+    image: "https://via.placeholder.com/800x400?text=Ford"
+  },
+  {
+    name: "Peugeot 208",
+    color: "فضي",
+    price: "145,000 درهم",
+    note: "اقتصادية – داخلية نقية – مجربة",
+    image: "https://via.placeholder.com/800x400?text=Peugeot"
+  },
+  {
+    name: "Mercedes C-Class",
+    color: "أزرق",
+    price: "300,000 درهم",
+    note: "فخمة – حالة ممتازة – أوراق كاملة",
+    image: "https://via.placeholder.com/800x400?text=Mercedes"
+  }
+];
+
+const img = document.getElementById("car-main-image");
+const nameEl = document.getElementById("car-name");
+const colorEl = document.getElementById("car-color");
+const priceEl = document.getElementById("car-price");
+const noteEl = document.getElementById("car-note");
+
+document.querySelectorAll(".car-label").forEach(label => {
+  label.addEventListener("click", () => {
+    const car = carData[label.dataset.car];
+    img.src = car.image;
+    nameEl.innerText = car.name;
+    colorEl.innerText = "اللون: " + car.color;
+    priceEl.innerText = "السعر: " + car.price;
+    noteEl.innerText = "الحالة: " + car.note;
+  });
+});
+</script>
+
+</body>
+</html>
